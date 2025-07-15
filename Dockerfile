@@ -15,12 +15,8 @@ COPY --from=base /app/src ./src
 COPY --from=base /app/node_modules ./node_modules
 
 RUN yarn build
+COPY  /app/dist ./dist
 
-#stage 3: run
-FROM node:20-alpine AS run
-WORKDIR /app
-
-COPY --from=builder /app /app
 
 CMD ["yarn", "run", "start:prod"]
 
