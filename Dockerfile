@@ -15,7 +15,7 @@ COPY --from=base /app/src ./src
 COPY --from=base /app/node_modules ./node_modules
 
 RUN yarn build
-COPY  /app/dist ./dist
+COPY  ./dist ./dist
 
 
 CMD ["yarn", "run", "start:prod"]
