@@ -6,7 +6,7 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 # stage 2: build
-FROM node:20-alpine AS runtime
+FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY --from=base /app/package.json ./package.json
@@ -16,8 +16,11 @@ COPY --from=base /app/node_modules ./node_modules
 
 RUN yarn build
 
+#stage 3: run
+FROM node:20-alpine AS run
+WORKDIR /app
 
-EXPOSE 3026
+COPY --from=builder /app /app
 
 CMD ["yarn", "run", "start:prod"]
 
