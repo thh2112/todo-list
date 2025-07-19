@@ -3,7 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
+
+import { AuthModule } from '@modules/auth/auth.module';
+import { UserModule } from '@modules/user/user.module';
 
 @Module({
   imports: [
@@ -29,7 +31,8 @@ import { AppController } from './app.controller';
       }),
       inject: [ConfigService],
     }),
+    UserModule,
+    AuthModule,
   ],
-  controllers: [AppController],
 })
 export class AppModule {}
