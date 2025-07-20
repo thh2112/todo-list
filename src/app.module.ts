@@ -5,6 +5,10 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from '@modules/auth/auth.module';
+import { ProjectHistoryModule } from '@modules/project-history/project-history.module';
+import { ProjectModule } from '@modules/project/project.module';
+import { TaskHistoryModule } from '@modules/task-history/task-history.module';
+import { TaskModule } from '@modules/task/task.module';
 import { UserModule } from '@modules/user/user.module';
 
 @Module({
@@ -33,6 +37,10 @@ import { UserModule } from '@modules/user/user.module';
     }),
     UserModule,
     AuthModule,
+    ProjectModule,
+    ProjectHistoryModule,
+    TaskModule,
+    TaskHistoryModule,
   ],
 })
 export class AppModule {}

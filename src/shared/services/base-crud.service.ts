@@ -135,7 +135,7 @@ export abstract class BaseCRUDService<T extends ObjectLiteral> {
     });
   }
 
-  public async deleteByID(entityID: number): Promise<void> {
+  public async deleteByID(entityID: number | string): Promise<void> {
     await this.model.softDelete({ id: entityID });
   }
 
