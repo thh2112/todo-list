@@ -12,6 +12,8 @@ export const ERR_CODE = {
   CONFLICT: 'CONFLICT'.toLowerCase(),
   UNPROCESSABLE_ENTITY: 'UNPROCESSABLE_ENTITY'.toLowerCase(),
   ALREADY_EXISTS: 'ALREADY_EXISTS'.toLowerCase(),
+  ALREADY_PROJECT_EXISTS: 'ALREADY_PROJECT_EXISTS'.toLowerCase(),
+  ALREADY_TASK_EXISTS: 'ALREADY_TASK_EXISTS'.toLowerCase(),
 };
 
 export const INJECTION_TOKEN = {
@@ -35,3 +37,15 @@ export const ENV_KEY = {
   JWT_ISSUER: 'JWT_ISSUER',
   JWT_AUDIENCE: 'JWT_AUDIENCE',
 };
+
+export enum PROJECT_STATUS {
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  DELETED = 'deleted',
+}
+
+export enum TASK_STATUS {
+  TO_DO = 'to_do',
+  IN_PROGRESS = 'in_progress',
+  DONE = 'done',
+}
