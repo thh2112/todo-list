@@ -1,0 +1,33 @@
+version: '3.9'
+
+name: ${ENV}
+
+services:
+  redis:
+    image: 'redis:7-alpine'
+    command: 'redis-server --requirepass redis123456'
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    networks:
+      - todo-list-network
+
+  api:
+    image: ${TAG_IMAGE}
+    restart: unless-stopped
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    env_file:
+      - .env
+    ports:
+      - '${PORT}:${PORT}'
+    environment:
+      - PORT=${PORT}
+    networks:
+      - todo-list-network
+
+networks:
+  todo-list-network:
+    driver: bridge
+    name: todo-list-network
